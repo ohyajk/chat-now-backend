@@ -1,18 +1,20 @@
 // IMPORTS
 const express = require('express');
+const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-const defaultRoute = require('./App/Routes/defaultRoute.js');
+const userRoute = require('./App/Routes/userRoute.js');
 const connectDB = require('./db.js');
 
 
 // MIDDLEWARES
+dotenv.config();
 const app = express();
 app.use(express.json());
-dotenv.config();
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // ROUTES
-app.use('/api/v1', defaultRoute);
+app.use('/api/v1', userRoute);
 
 
 // DATABASE CONNECTION

@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please enter your username'],
         unique: [true, 'Username already exists'],
-        minlngth: [4, 'Username must be at least 4 characters long'],
+        minlength: [4, 'Username must be at least 4 characters long'],
         lowercase: true,
     },
     email: {
@@ -22,7 +22,6 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Please enter your password'],
-        minlength: [6, 'Password must be at least 6 characters long'],
     },
     gender: {
         type: String,
@@ -36,6 +35,9 @@ const UserSchema = new mongoose.Schema({
     isVerified: {
         type: Boolean,
         default: [false, 'Please verify your Account'],
+    },
+    otp: {
+        type: Number,
     }
 }, {
     timestamps: true,
@@ -50,9 +52,9 @@ UserSchema.pre('save', function (next) {
     this.gender = this.gender.toLowerCase();
     if (this.profilePicture === '') {
         if (this.gender === 'male') {
-            this.profilePicture = 'default_male_image_link.jpg';
+            this.profilePicture = 'https://ik.imagekit.io/ohyajk/male.png';
         } else if (this.gender === 'female') {
-            this.profilePicture = 'default_female_image_link.jpg';
+            this.profilePicture = 'https://ik.imagekit.io/ohyajk/female.png';
         }
     }
     next();
