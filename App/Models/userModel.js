@@ -37,7 +37,10 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: [false, 'Please verify your Account'],
     }
-});
+}, {
+    timestamps: true,
+}
+);
 
 // Middleware to make the fields lowercase before saving !
 UserSchema.pre('save', function (next) {
