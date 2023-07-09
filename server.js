@@ -2,17 +2,21 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const defaultRoute = require('./App/Routes/defaultRoute.js');
+const connectDB = require('./db.js');
+
 
 // MIDDLEWARES
 const app = express();
 app.use(express.json());
 dotenv.config();
 
+
 // ROUTES
 app.use('/api/v1', defaultRoute);
 
-// DATABASE CONNECTION
 
+// DATABASE CONNECTION
+connectDB()
 
 
 // PORT & LISTEN
