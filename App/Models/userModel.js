@@ -52,9 +52,9 @@ UserSchema.pre('save', function (next) {
     this.gender = this.gender.toLowerCase();
     if (this.profilePicture === '') {
         if (this.gender === 'male') {
-            this.profilePicture = 'https://ik.imagekit.io/ohyajk/male.png';
+            this.profilePicture = 'https://res.cloudinary.com/dys8tzl4v/image/upload/v1689325243/profiles/user_regpmz.png';
         } else if (this.gender === 'female') {
-            this.profilePicture = 'https://ik.imagekit.io/ohyajk/female.png';
+            this.profilePicture = 'https://res.cloudinary.com/dys8tzl4v/image/upload/v1689325243/profiles/userf_tfspjs.png';
         }
     }
     next();
